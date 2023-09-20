@@ -63,3 +63,29 @@ final class TransportConfig {
         transport_type_destroy(pointer)
     }
 }
+
+final class ChatTransportConfig {
+
+    // MARK: - Properties
+
+    let pointer: OpaquePointer
+
+    // MARK: - Initialisers
+
+    init(controlServerAddress: String?, torPort: UInt16, torCookie: ByteVector, socksUsername: String?, socksPassword: String?) throws {
+
+        var errorCode: Int32 = -1
+        let errorCodePointer = PointerHandler.pointer(for: &errorCode)
+
+        let result = create_chat_tor_transport_config(controlServerAddress, torCookie.pointer, torPort, false, socksUsername, socksPassword, errorCodePointer)
+
+        guard errorCode == 0, let result = result else { throw WalletError(code: errorCode) }
+        pointer = result
+    }
+
+    // MARK: - Deinitialiser
+
+    deinit {
+        destroy_chat_tor_transport_config(pointer)
+    }
+}

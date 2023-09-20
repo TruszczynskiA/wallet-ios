@@ -364,6 +364,8 @@
 		540F023B2A6A7F6400691FF5 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F023A2A6A7F6400691FF5 /* TransactionsViewController.swift */; };
 		540F023D2A6A7F6C00691FF5 /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F023C2A6A7F6C00691FF5 /* TransactionsView.swift */; };
 		540F02412A6A7F8000691FF5 /* TransactionsConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540F02402A6A7F8000691FF5 /* TransactionsConstructor.swift */; };
+		540F33BC2A9F3FA500085E80 /* libminotari_chat_ffi_ios.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540F33BB2A9F3FA400085E80 /* libminotari_chat_ffi_ios.xcframework */; };
+		540F33BD2A9F3FA500085E80 /* libminotari_chat_ffi_ios.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 540F33BB2A9F3FA400085E80 /* libminotari_chat_ffi_ios.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		541029042A402D930095F7CB /* RotaryMenuOuterCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541029032A402D930095F7CB /* RotaryMenuOuterCircleView.swift */; };
 		541029062A406E4E0095F7CB /* CGFloat+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541029052A406E4E0095F7CB /* CGFloat+Utils.swift */; };
 		541029082A406E810095F7CB /* CGPoint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541029072A406E810095F7CB /* CGPoint+Utils.swift */; };
@@ -474,6 +476,7 @@
 		54AA5D5E298126CA0031A396 /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AA5D5D298126CA0031A396 /* OnboardingPageView.swift */; };
 		54AD5F662A420A9F00D223B8 /* Data+Utlis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AD5F652A420A9F00D223B8 /* Data+Utlis.swift */; };
 		54ADC0932A3858C40082C455 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ADC0922A3858C40082C455 /* ErrorView.swift */; };
+		54B092472A973DF700B11087 /* ChatSandbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B092462A973DF700B11087 /* ChatSandbox.swift */; };
 		54B7F4452996583800BB484B /* ContactBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B7F4442996583800BB484B /* ContactBookCell.swift */; };
 		54B854B929BF993600A2367A /* ContactBookListPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B854B829BF993600A2367A /* ContactBookListPlaceholder.swift */; };
 		54BB5E052A2F081300E239C7 /* UserProfileDeeplink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB5E042A2F081300E239C7 /* UserProfileDeeplink.swift */; };
@@ -560,6 +563,17 @@
 			files = (
 			);
 			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		540F33BE2A9F3FA500085E80 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				540F33BD2A9F3FA500085E80 /* libminotari_chat_ffi_ios.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -929,6 +943,7 @@
 		540F023A2A6A7F6400691FF5 /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		540F023C2A6A7F6C00691FF5 /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
 		540F02402A6A7F8000691FF5 /* TransactionsConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsConstructor.swift; sourceTree = "<group>"; };
+		540F33BB2A9F3FA400085E80 /* libminotari_chat_ffi_ios.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libminotari_chat_ffi_ios.xcframework; path = MobileWallet/ChatLib/libminotari_chat_ffi_ios.xcframework; sourceTree = "<group>"; };
 		541029032A402D930095F7CB /* RotaryMenuOuterCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotaryMenuOuterCircleView.swift; sourceTree = "<group>"; };
 		541029052A406E4E0095F7CB /* CGFloat+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Utils.swift"; sourceTree = "<group>"; };
 		541029072A406E810095F7CB /* CGPoint+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Utils.swift"; sourceTree = "<group>"; };
@@ -1039,6 +1054,7 @@
 		54AA5D5D298126CA0031A396 /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
 		54AD5F652A420A9F00D223B8 /* Data+Utlis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Utlis.swift"; sourceTree = "<group>"; };
 		54ADC0922A3858C40082C455 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		54B092462A973DF700B11087 /* ChatSandbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSandbox.swift; sourceTree = "<group>"; };
 		54B7F4442996583800BB484B /* ContactBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactBookCell.swift; sourceTree = "<group>"; };
 		54B854B829BF993600A2367A /* ContactBookListPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactBookListPlaceholder.swift; sourceTree = "<group>"; };
 		54BB5E042A2F081300E239C7 /* UserProfileDeeplink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDeeplink.swift; sourceTree = "<group>"; };
@@ -1116,6 +1132,7 @@
 			files = (
 				545B80A2298D40CF00405AE9 /* libtari_wallet_ffi_ios.xcframework in Frameworks */,
 				4C363B762574F15E00D99868 /* OpenSSL.xcframework in Frameworks */,
+				540F33BC2A9F3FA500085E80 /* libminotari_chat_ffi_ios.xcframework in Frameworks */,
 				371189732488FF11004D0CE3 /* CloudKit.framework in Frameworks */,
 				00DC2E22238554FD00036DDC /* libsqlite3.tbd in Frameworks */,
 				0070A7BC2379847100C25E1C /* LocalAuthentication.framework in Frameworks */,
@@ -1446,6 +1463,7 @@
 		00E491982366E08B007B332D /* MobileWallet */ = {
 			isa = PBXGroup;
 			children = (
+				54B0923D2A973DCC00B11087 /* ChatLib */,
 				00B4D6FB241B97CD00ED8318 /* Tari.entitlements */,
 				4C2C95B8237959B3005058AB /* MobileWallet-bridging-header.h */,
 				54F23DE629BBA0C3001E39A2 /* InfoPlist.strings */,
@@ -1469,6 +1487,7 @@
 		27F235021D9E2060A3CBB465 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				540F33BB2A9F3FA400085E80 /* libminotari_chat_ffi_ios.xcframework */,
 				545B80A1298D40CF00405AE9 /* libtari_wallet_ffi_ios.xcframework */,
 				4C363B372574EFE500D99868 /* OpenSSL.xcframework */,
 				371189722488FF11004D0CE3 /* CloudKit.framework */,
@@ -2808,6 +2827,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		54B0923D2A973DCC00B11087 /* ChatLib */ = {
+			isa = PBXGroup;
+			children = (
+				54B092452A973DE400B11087 /* Core */,
+			);
+			path = ChatLib;
+			sourceTree = "<group>";
+		};
+		54B092452A973DE400B11087 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				54B092462A973DF700B11087 /* ChatSandbox.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		54B7F4432996582B00BB484B /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -3041,6 +3076,7 @@
 				00E491942366E08B007B332D /* Resources */,
 				1D2ED85D52528FD37F207E5E /* [CP] Embed Pods Frameworks */,
 				00C520A7246965260077BF7F /* Embed Foundation Extensions */,
+				540F33BE2A9F3FA500085E80 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3549,6 +3585,7 @@
 				545A9D1D294F9305008D24A6 /* ThemeSettingsCollectionCell.swift in Sources */,
 				37E0B008249B700F00DFE315 /* UIFont+FontStyle.swift in Sources */,
 				5444C80629F17C1800BF3875 /* BluetoothSettingsViewController.swift in Sources */,
+				54B092472A973DF700B11087 /* ChatSandbox.swift in Sources */,
 				3A8473C228EC556C0015E63A /* CoreTariService.swift in Sources */,
 				3A2B956A28648D860085BE21 /* CChar+Helpers.swift in Sources */,
 				54F2E34C29EE9FFC00A7A15A /* ContactTransactionListHeaderView.swift in Sources */,
@@ -3892,6 +3929,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = MobileWallet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3927,6 +3965,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = MobileWallet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

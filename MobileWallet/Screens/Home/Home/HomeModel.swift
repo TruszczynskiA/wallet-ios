@@ -55,6 +55,8 @@ final class HomeModel {
 
     // MARK: - Properties
 
+    let sandbox = ChatSandbox()
+
     private let onContactUpdated = PassthroughSubject<Void, Never>()
 
     private let contactsManager = ContactsManager()

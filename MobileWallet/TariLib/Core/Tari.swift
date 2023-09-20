@@ -262,6 +262,13 @@ final class Tari: MainServiceable {
         NetworkManager.shared.removeSelectedNetworkSettings()
     }
 
+    func makeTC() async throws -> ChatTransportConfig {
+        let torCookie = try await torManager.cookie()
+//        return try makeTransportType(torCookie: torCookie)
+        let torCookieVector = try ByteVector(data: torCookie)
+        return try ChatTransportConfig(controlServerAddress: torManager.controlServerAddress, torPort: 18101, torCookie: torCookieVector, socksUsername: nil, socksPassword: nil)
+    }
+
     private func makeCommsConfig() async throws -> CommsConfig {
 
         let torCookie = try await torManager.cookie()
