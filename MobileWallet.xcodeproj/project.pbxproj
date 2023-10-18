@@ -478,7 +478,6 @@
 		54AD5F662A420A9F00D223B8 /* Data+Utlis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AD5F652A420A9F00D223B8 /* Data+Utlis.swift */; };
 		54ADC0932A3858C40082C455 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ADC0922A3858C40082C455 /* ErrorView.swift */; };
 		54B3A5452AC2CE7800FDC578 /* libtari_wallet_ffi_ios.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B3A5442AC2CE7800FDC578 /* libtari_wallet_ffi_ios.xcframework */; };
-		54B3A5462AC2CE7800FDC578 /* libtari_wallet_ffi_ios.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 54B3A5442AC2CE7800FDC578 /* libtari_wallet_ffi_ios.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		54B7F4452996583800BB484B /* ContactBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B7F4442996583800BB484B /* ContactBookCell.swift */; };
 		54B854B929BF993600A2367A /* ContactBookListPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B854B829BF993600A2367A /* ContactBookListPlaceholder.swift */; };
 		54BB5E052A2F081300E239C7 /* UserProfileDeeplink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB5E042A2F081300E239C7 /* UserProfileDeeplink.swift */; };
@@ -578,17 +577,6 @@
 			files = (
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		54B3A5472AC2CE7800FDC578 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				54B3A5462AC2CE7800FDC578 /* libtari_wallet_ffi_ios.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -3150,7 +3138,6 @@
 				00E491942366E08B007B332D /* Resources */,
 				1D2ED85D52528FD37F207E5E /* [CP] Embed Pods Frameworks */,
 				00C520A7246965260077BF7F /* Embed Foundation Extensions */,
-				54B3A5472AC2CE7800FDC578 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
