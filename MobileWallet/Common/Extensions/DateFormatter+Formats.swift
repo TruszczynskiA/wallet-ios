@@ -47,4 +47,20 @@ extension DateFormatter {
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }
+
+    static var hour: Self {
+        let formatter = Self()
+        formatter.dateFormat = "h:mm a"
+        formatter.timeZone = .current
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }
+
+    static var shortDate: Self {
+        let formatter = Self()
+        formatter.dateFormat = "MMM dd yyy"
+        formatter.timeZone = .current
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }
 }

@@ -50,11 +50,18 @@ final class Tari: MainServiceable {
     static let defaultOutputCount = UInt64(2)
 
     private let databaseName = "tari_wallet"
+    private let chatDatabaseName = "tari_chat"
 
     var connectedDatabaseDirectory: URL { TariSettings.storageDirectory.appendingPathComponent("\(databaseName)_\(NetworkManager.shared.selectedNetwork.name)", isDirectory: true) }
     var databaseURL: URL { connectedDatabaseDirectory.appendingPathComponent(databaseFilename) }
     private var databaseFilename: String { databaseName + ".sqlite3" }
 
+    private var chatDatabaseDirectory: URL { TariSettings.storageDirectory.appendingPathComponent("\(chatDatabaseName)_\(NetworkManager.shared.selectedNetwork.name)", isDirectory: true) }
+    private lazy var chatIdentityFilePath = chatDatabaseDirectory.appendingPathComponent("chat_id_file").path
+
+    private let torControlAddress = "127.0.0.1" // TODO: Merge?
+    private let torControlPort: UInt16 = 39069 // TODO: Merge?
+    private lazy var torControlServerAddress = "/ip4/\(torControlAddress)/tcp/\(torControlPort)"
     private let logFilePrefix = "log"
     private let publicAddress = "/ip4/0.0.0.0/tcp/9838"
     private let discoveryTimeoutSec: UInt64 = 20
@@ -77,6 +84,8 @@ final class Tari: MainServiceable {
     private(set) lazy var validation = TariValidationService(walletManager: walletManager, services: self)
     private(set) lazy var walletBalance = TariBalanceService(walletManager: walletManager, services: self)
     private(set) lazy var unspentOutputsService = TariUnspentOutputsService(walletManager: walletManager, services: self)
+
+    private(set) lazy var chatMessagesService = ChatMessagesService(chatManager: chatManager)
 
     private(set) lazy var logFilePath: String = {
         let dateFormatter = DateFormatter()
@@ -110,6 +119,7 @@ final class Tari: MainServiceable {
 
     private let torManager = TorManager()
     private let walletManager = FFIWalletManager()
+    private let chatManager = ChatManager()
     private var cancellables = Set<AnyCancellable>()
 
     private var passphrase: String {
@@ -185,6 +195,11 @@ final class Tari: MainServiceable {
 
     // MARK: - Actions
 
+    func startChatTest() throws { // TODO: Remove
+//        let testAddress = try TariAddress(hex: "da8436e5d32fe22bd3aae036a5cbbc6aaa768d292a35df0cf52f25f482a0126423") // TODO: Remove
+//        try chatManager.startTest(address: testAddress)
+    }
+
     func startWallet() async throws {
         await waitForTor()
         try await startWallet(seedWords: nil)
@@ -245,6 +260,15 @@ final class Tari: MainServiceable {
         do {
             try walletManager.connectWallet(commsConfig: commsConfig, logFilePath: logFilePath, seedWords: walletSeedWords, passphrase: passphrase, networkName: selectedNetwork.name)
             resetServices()
+            try await chatManager.start(
+                networkName: selectedNetwork.name,
+                publicAddress: torControlServerAddress,
+                datastorePath: chatDatabaseDirectory.path,
+                identityFilePath: chatIdentityFilePath,
+                transportConfig: makeTC(),
+                logPath: logFilePath,
+                logVerbosity: 0 // TODO: Ask Brian
+            )
         } catch {
             guard let error = error as? WalletError, error == WalletError.invalidPassphrase else { throw error }
             try walletManager.connectWallet(commsConfig: commsConfig, logFilePath: logFilePath, seedWords: walletSeedWords, passphrase: nil, networkName: selectedNetwork.name)
@@ -272,10 +296,17 @@ final class Tari: MainServiceable {
         NetworkManager.shared.removeSelectedNetworkSettings()
     }
 
+    private func makeTC() async throws -> TransportConfig { // TODO: !
+        let torCookie = try await torManager.cookie()
+        return try makeTransportType(torCookie: torCookie)
+    }
+
     private func makeCommsConfig() async throws -> CommsConfig {
 
-        let torCookie = try await torManager.cookie()
-        let transportType = try makeTransportType(torCookie: torCookie)
+//        let torCookie = try await torManager.cookie()
+//        let transportType = try makeTransportType(torCookie: torCookie)
+
+        let transportType = try await makeTC()
 
         return try CommsConfig(
             publicAddress: publicAddress,
@@ -292,7 +323,7 @@ final class Tari: MainServiceable {
         let torCookie = try ByteVector(data: torCookie)
 
         return try TransportConfig(
-            controlServerAddress: torManager.controlServerAddress,
+            controlServerAddress: torControlServerAddress,
             torPort: 18101,
             torCookie: torCookie,
             socksUsername: nil,

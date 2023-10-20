@@ -111,6 +111,19 @@ extension TariNetwork {
         )
     }
 
+    static var esme: Self {
+        makeNetwork(
+            name: "esme",
+            presentedName: "Esme",
+            isMainNet: false,
+            rawBaseNodes: [
+                "Emse 01": "8e7eb81e512f3d6347bf9b1ca9cd67d2c8e29f2836fc5bd608206505cc72af34::/ip6/fd56:2026:93c0:0:9e:96fb:e119:d8ec/tcp/18189",
+                "Emse 02": "40a9d8573745072534bce7d0ecafe882b1c79570375a69841c08a98dee9ecb5f::/ip6/fd56:2026:93c0:0:9e:96fb:e119:d8ec/tcp/18189",
+                "Emse 03": "126c7ee64f71aca36398b977dd31fbbe9f9dad615df96473fb655bef5709c540::/ip6/fd56:2026:93c0:0:9e:96fb:e119:d8ec/tcp/18189"
+            ]
+        )
+    }
+
     private static func makeNetwork(name: String, presentedName: String, isMainNet: Bool, rawBaseNodes: [String: String]) -> Self {
         let baseNodes = rawBaseNodes.compactMap { try? BaseNode(name: $0, peer: $1) }
         let currencySymbol = isMainNet ? "XTR" : "tXTR"

@@ -38,10 +38,9 @@
 	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import UIKit
 import TariCommon
 
-final class RoundedAvatarView: DynamicThemeView {
+class RoundedAvatarView: DynamicThemeView {
 
     enum Avatar {
         case text(_: String?)

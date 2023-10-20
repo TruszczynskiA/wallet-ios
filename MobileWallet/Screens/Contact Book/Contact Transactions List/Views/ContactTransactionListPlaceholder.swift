@@ -142,7 +142,7 @@ final class ContactTransactionListPlaceholder: DynamicThemeView {
     }
 }
 
-final class PaintBackgroundImageView: DynamicThemeView {
+final class PaintBackgroundImageView: DynamicThemeView { // TODO: Move
 
     // MARK: - Subviews
 

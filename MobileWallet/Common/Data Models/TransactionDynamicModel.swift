@@ -39,6 +39,7 @@
 */
 
 import GiphyUISDK
+import Combine
 
 final class TransactionDynamicModel {
 
@@ -54,31 +55,25 @@ final class TransactionDynamicModel {
     @Published private(set) var formattedTimestamp: String = ""
     @Published private(set) var gif: GifDataState = .none
 
-    private let timestamp: TimeInterval
+    private let timestampModel: DynamicTimestampModel
     private let giphyID: String?
+    private var cancellables = Set<AnyCancellable>()
 
     // MARK: - Initialisers
 
     init(timestamp: TimeInterval, giphyID: String?) {
-        self.timestamp = timestamp
+        timestampModel = DynamicTimestampModel(timestamp: timestamp)
         self.giphyID = giphyID
-        setupTimer()
-        updateFormattedTimestamp()
+        setupCallbacks()
         fetchGif()
     }
 
     // MARK: - Setups
 
-    private func setupTimer() {
-        Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { [weak self] _ in
-            self?.updateFormattedTimestamp()
-        }
-    }
-
-    // MARK: - Actions
-
-    private func updateFormattedTimestamp() {
-        formattedTimestamp = Date(timeIntervalSince1970: timestamp).relativeDayFromToday() ?? ""
+    private func setupCallbacks() {
+        timestampModel.$formattedTimestamp
+            .assignPublisher(to: \.formattedTimestamp, on: self)
+            .store(in: &cancellables)
     }
 
     func fetchGif() {

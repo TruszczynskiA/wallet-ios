@@ -44,11 +44,11 @@ final class TorManager {
 
     // MARK: - Constants
 
-    private let controlAddress = "127.0.0.1"
-    private let controlPort: UInt16 = 39069
+//    private let controlAddress = "127.0.0.1"
+//    private let controlPort: UInt16 = 39069
     private let dataDirectoryUrl = TariSettings.storageDirectory.appendingPathComponent("tor", isDirectory: true)
     private lazy var authDirectoryURL = dataDirectoryUrl.appendingPathComponent("auth", isDirectory: true)
-    private(set) lazy var controlServerAddress = "/ip4/\(controlAddress)/tcp/\(controlPort)"
+//    private(set) lazy var controlServerAddress = "/ip4/\(controlAddress)/tcp/\(controlPort)"
 
     // MARK: - Properties
 
